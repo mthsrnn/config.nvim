@@ -43,8 +43,3 @@ vim.keymap.set("n", "Q", "<nop>")
 -- very clever!
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- source files with double leader, great for writing configs like that :D
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
-
