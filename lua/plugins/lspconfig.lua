@@ -1,41 +1,48 @@
 return {
+	{
+		"williamboman/mason.nvim",
+		lazy = false,
+		config = function()
+			require("mason").setup()
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		lazy = false,
+		opts = {
+			auto_install = true,
+		},
+	},
+	{
+		"neovim/nvim-lspconfig",
+		lazy = false,
+		config = function()
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    {
-        "williamboman/mason.nvim",
-        lazy = false,
-        config = function()
-            require("mason").setup()
-        end,
-    },
-
-    {
-        "neovim/nvim-lspconfig", -- REQUIRED: for native Neovim LSP integration
-        lazy = false,            -- REQUIRED: tell lazy.nvim to start this plugin at startup
-        dependencies = {
-            { 'williamboman/mason-lspconfig.nvim', lazy = false,        opts = { ensure_installed = { "lua_ls", "clangd", "tsserver" } } },
-            -- main one
-            { "ms-jpq/coq_nvim",                   branch = "coq" },
-
-            -- 9000+ Snippets
-            { "ms-jpq/coq.artifacts",              branch = "artifacts" },
-
-            { 'ms-jpq/coq.thirdparty',             branch = "3p" },
-        },
-        init = function()
-            vim.g.coq_settings = {
-                auto_start = 'shut-up', -- if you want to start COQ at startup
+			local lspconfig = require("lspconfig")
+			lspconfig.clangd.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.tsserver.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.solargraph.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.html.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+            lspconfig.html.setup {
+                capabilities = capabilities,
             }
-        end,
-        config = function()
-            -- Your LSP settings here
-            local lsp = require "lspconfig"
-            local coq = require "coq" -- add this
 
-            lsp.tsserver.setup(coq.lsp_ensure_capabilities({}))
-            lsp.html.setup(coq.lsp_ensure_capabilities({}))
-            lsp.lua_ls.setup(coq.lsp_ensure_capabilities({}))
-            lsp.clangd.setup(coq.lsp_ensure_capabilities({}))
-            lsp.tsserver.setup(coq.lsp_ensure_capabilities({}))
-        end,
-
-    }, }
+			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+			vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+			vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+			vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
+		end,
+	},
+}
