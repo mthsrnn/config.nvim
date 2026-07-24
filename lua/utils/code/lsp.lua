@@ -6,10 +6,9 @@ M.servers = {
       root_markers = { ".git", "init.lua", ".luarc.json" },
       settings = { Lua = { runtime = { version = 'LuaJIT' }, diagnostics = { globals = { 'vim' } } } }
     },
-    gopls = { cmd = { "/usr/bin/gopls" } },
-    qmlls = { cmd = { "/lib64/qt6/bin/qmlls", "-E" } },
-    clangd = { cmd = { "/usr/lib/llvm/21/bin/clangd" } },
-    jdtls = {}
+    gopls = {},
+    qmlls = {},
+    clangd = {},
 }
 
 function M.setup_lspconfig(capabilities, servers)

@@ -35,8 +35,7 @@
     },
     "nvim-java": {
       "rev": "8fbcdcc77ce5a5bf99044180dc3aa9411b7416e7",
-      "src": "https://github.com/omerfdmrl/nvim-java",
-      "version": "'fix/jdtls-download-url'"
+      "src": "https://github.com/omerfdmrl/nvim-java"
     },
     "nvim-lspconfig": {
       "rev": "9ccd58a7949091c0cc2777d4e92a45a209c808c1",
@@ -45,6 +44,10 @@
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "oxocarbon.nvim": {
+      "rev": "cf49e389c22dab56224e43ae16422ddcd5b61b28",
+      "src": "https://github.com/nyoom-engineering/oxocarbon.nvim"
     },
     "shipwright.nvim": {
       "rev": "e596ab48328c31873f4f4d2e070243bf9de16ff3",
@@ -58,10 +61,6 @@
     "toggleterm.nvim": {
       "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
       "src": "https://github.com/akinsho/toggleterm.nvim"
-    },
-    "unsigned": {
-      "rev": "1c1b78beceaecd81b47fb98525603e6005b70a42",
-      "src": "/home/renan/.local/source/unsigned"
     }
   }
 }
